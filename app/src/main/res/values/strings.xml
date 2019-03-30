@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FabulousAdventure</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_vocab">Vocab</string>
+    <string name="title_activity_mock_exam">MockExam</string>
+    <string name="title_activity_login_sign_up">LoginSignUp</string>
 </resources>
