@@ -9,20 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SIGNUP"></activity>
-        <activity android:name=".LOGIN" />
         <activity
-            android:name=".LoginSignUp"
-            android:label="@string/title_activity_login_sign_up"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MockExam"
-            android:label="@string/title_activity_mock_exam"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Vocab"
-            android:label="@string/title_activity_vocab"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Vocab2">
+            android:parentActivityName=".Vocab"/>
+        </activity>
+        <activity android:name=".Vocab" />
+        <activity android:name=".MainPage" />
+        <activity android:name=".Login" />
+        <activity android:name=".Answerspage" />
+        <activity android:name=".questionslist" />
+        <activity android:name=".MockExam" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
