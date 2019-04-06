@@ -9,6 +9,11 @@
     tools:context=".MockExam"
     tools:layout_editor_absoluteY="81dp">
 
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar">
+    </include>
+
     <Button
         android:id="@+id/Beginexam"
         android:layout_width="246dp"
