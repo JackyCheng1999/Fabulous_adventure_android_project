@@ -243,6 +243,8 @@ public class questionslist extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 
