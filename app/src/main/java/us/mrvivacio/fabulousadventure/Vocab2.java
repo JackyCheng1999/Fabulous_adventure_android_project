@@ -55,10 +55,10 @@ public class Vocab2 extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: setting content view again");
 
-        //Toolbar toolbar = findViewById(R.id.action_bar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Toolbar toolbar = findViewById(R.id.action_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Log.d(TAG, "onCreate: getSupportActionBar");
 
@@ -77,7 +77,7 @@ public class Vocab2 extends AppCompatActivity {
         Log.d(TAG, "onCreate: finished");
     }
 
-    /*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -89,7 +89,7 @@ public class Vocab2 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
-    */
+
 
     public class MyListAdapter extends ArrayAdapter {
         private int layout;

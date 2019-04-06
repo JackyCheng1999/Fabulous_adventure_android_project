@@ -2,6 +2,10 @@ package us.mrvivacio.fabulousadventure;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class Answerspage extends questionslist {
@@ -16,6 +20,7 @@ public class Answerspage extends questionslist {
         setContentView(R.layout.activity_answerspage);
         yourAnswer = (TextView) findViewById(R.id.yourAnswer);
         correctAnswer = (TextView) findViewById(R.id.correctAnswer);
+
 
         /**
          * GET THE ANSWERS
@@ -41,4 +46,5 @@ public class Answerspage extends questionslist {
 
         correctAnswer.append("C D A A C B C A B B D");
     }
+
 }

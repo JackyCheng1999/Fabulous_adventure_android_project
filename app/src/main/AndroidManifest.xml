@@ -8,17 +8,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".Vocab2">
-            android:parentActivityName=".Vocab"/>
-        </activity>
-        <activity android:name=".Vocab" />
-        <activity android:name=".MainPage" />
+            android:name=".Vocab2"
+            android:parentActivityName=".MainPage"/>
+        <activity android:name=".MainPage"
+            android:parentActivityName=".Login"/>
         <activity android:name=".Login" />
         <activity android:name=".Answerspage" />
-        <activity android:name=".questionslist" />
-        <activity android:name=".MockExam" />
+        <activity android:name=".questionslist"
+            android:parentActivityName=".MockExam"/>
+        <activity android:name=".MockExam"
+            android:parentActivityName=".MainPage"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
