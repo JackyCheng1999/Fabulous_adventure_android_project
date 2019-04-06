@@ -23,6 +23,7 @@ public class MockExam extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.username);
 
         Beginexam = (Button) findViewById(R.id.Beginexam);
         Beginexam.setOnClickListener(new View.OnClickListener() {

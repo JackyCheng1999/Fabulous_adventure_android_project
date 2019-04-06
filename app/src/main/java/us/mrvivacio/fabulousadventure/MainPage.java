@@ -27,6 +27,7 @@ public class MainPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.username);
 
 
         b1.setOnClickListener(new View.OnClickListener() {
