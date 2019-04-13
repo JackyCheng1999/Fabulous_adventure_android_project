@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mylibrary.Word;
+
 public class MainPage extends AppCompatActivity {
 
     Button b1, b2;
@@ -28,7 +30,7 @@ public class MainPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.username);
+        getSupportActionBar().setTitle(Word.username);
 
 
         b1.setOnClickListener(new View.OnClickListener() {

@@ -36,7 +36,7 @@ public class AddWord extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.username);
+        getSupportActionBar().setTitle(Word.username);
 
         Log.d(TAG, "onCreate: getSupportActionBar");
 

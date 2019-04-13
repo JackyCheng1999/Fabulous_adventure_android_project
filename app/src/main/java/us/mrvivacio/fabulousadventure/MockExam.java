@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mylibrary.Word;
+
 public class MockExam extends AppCompatActivity {
 
     private Button Beginexam;
@@ -24,7 +26,7 @@ public class MockExam extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.username);
+        getSupportActionBar().setTitle(Word.username);
 
         Beginexam = (Button) findViewById(R.id.Beginexam);
         Beginexam.setOnClickListener(new View.OnClickListener() {

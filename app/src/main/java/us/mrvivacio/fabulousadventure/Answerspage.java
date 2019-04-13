@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.mylibrary.Word;
+
 public class Answerspage extends questionslist {
 
     private TextView yourAnswer;
@@ -26,7 +28,7 @@ public class Answerspage extends questionslist {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.username);
+        getSupportActionBar().setTitle(Word.username);
 
         /**
          * GET THE ANSWERS

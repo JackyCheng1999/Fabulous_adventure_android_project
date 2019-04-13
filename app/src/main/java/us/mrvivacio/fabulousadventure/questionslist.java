@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.mylibrary.Word;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,7 +54,7 @@ public class questionslist extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.username);
+        getSupportActionBar().setTitle(Word.username);
 
         TextView MessageWindow = (TextView) findViewById(R.id.messageWindow2);
         StringBuilder stringBuilder = new StringBuilder();
