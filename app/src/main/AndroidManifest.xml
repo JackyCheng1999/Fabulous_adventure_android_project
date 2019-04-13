@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".AddWord"
+            android:parentActivityName=".Vocab2"></activity>
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".MainPage" />
         <activity
             android:name=".Vocab2"
             android:parentActivityName=".MainPage" />
@@ -17,7 +21,8 @@
             android:name=".MainPage"
             android:parentActivityName=".Login" />
         <activity android:name=".Login" />
-        <activity android:name=".Answerspage" />
+        <activity android:name=".Answerspage"
+            android:parentActivityName=".questionslist"/>
         <activity
             android:name=".questionslist"
             android:parentActivityName=".MockExam" />

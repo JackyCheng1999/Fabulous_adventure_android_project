@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Word implements Comparable {
+    public static String username;
     static String TAG = "brett Word";
 
     //Pulled from https://www.prepscholar.com/toefl/blog/wp-content/uploads/sites/13/2017/08/TOEFL-Vocab-Word-List.pdf
@@ -79,7 +80,7 @@ public class Word implements Comparable {
     private String definition;
     private int mastery;
 
-    Word(String newWord, String newDefinition) {
+    public Word(String newWord, String newDefinition) {
         word = newWord;
         definition = newDefinition;
         mastery = 1;
