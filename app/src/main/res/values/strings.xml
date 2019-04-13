@@ -5,5 +5,5 @@
     <string name="title_activity_mock_exam">MockExam</string>
     <string name="title_activity_login_sign_up">LoginSignUp</string>
     <string name="settings_name">Settings</string>
-    <string name="username">Username Not Set</string>
+    <string name="username">Not Set</string>
 </resources>
