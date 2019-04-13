@@ -55,10 +55,12 @@ public class Vocab2 extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: setting content view again");
 
+        //https://www.youtube.com/watch?v=LD2zsCAAVXw
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.username);
 
         Log.d(TAG, "onCreate: getSupportActionBar");
 
@@ -75,6 +77,14 @@ public class Vocab2 extends AppCompatActivity {
         });
 
         Log.d(TAG, "onCreate: finished");
+
+    }
+
+    public void add(View view) {
+        Log.d(TAG, "toVocab: STARTING ADD INTENT");
+        Intent startNewActivity = new Intent(Vocab2.this, AddWord.class);
+        startActivity(startNewActivity);
+        Log.d(TAG, "toVocab: FINISHED ADD INTENT");
     }
 
 

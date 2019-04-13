@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mylibrary.Word;
+
 public class Login extends AppCompatActivity {
 
     EditText e1, e2;
@@ -31,6 +33,7 @@ public class Login extends AppCompatActivity {
                 String password = e2.getText().toString();
                 boolean chkemailpass = db.emailpassword(email, password);
                 if (chkemailpass == true) {
+                    Word.username = email;
                     Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainPage.class);
                     startActivity(intent);

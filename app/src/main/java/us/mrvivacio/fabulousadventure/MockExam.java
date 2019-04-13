@@ -19,10 +19,12 @@ public class MockExam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_exam);
 
+        //https://www.youtube.com/watch?v=LD2zsCAAVXw
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.username);
 
         Beginexam = (Button) findViewById(R.id.Beginexam);
         Beginexam.setOnClickListener(new View.OnClickListener() {

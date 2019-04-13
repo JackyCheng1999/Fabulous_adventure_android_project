@@ -47,10 +47,12 @@ public class questionslist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionslist);
 
+        //https://www.youtube.com/watch?v=LD2zsCAAVXw
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle(R.string.username);
 
         TextView MessageWindow = (TextView) findViewById(R.id.messageWindow2);
         StringBuilder stringBuilder = new StringBuilder();
