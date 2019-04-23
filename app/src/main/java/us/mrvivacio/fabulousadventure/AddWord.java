@@ -49,7 +49,7 @@ public class AddWord extends AppCompatActivity {
             public void onClick(View v) {
                 String wordInfo = word.getText().toString();
                 String defInfo = definition.getText().toString();
-                Word.allWords.add(new Word(wordInfo, defInfo));
+                Word.allWords.add(new Word(wordInfo, defInfo, 1));
                 Toast.makeText(getApplicationContext(), "Word Added", Toast.LENGTH_SHORT).show();
             }
         });
