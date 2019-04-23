@@ -24,10 +24,15 @@ import android.widget.Toast;
 
 import com.example.mylibrary.Word;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//Activity to display vocab words
 public class Vocab2 extends AppCompatActivity {
 
     private static final String TAG = "brett VocabActivity";
@@ -39,6 +44,7 @@ public class Vocab2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: entry point");
+        generateList();
         String[] array = new String[5];
         List testVocab = Word.pullRandom();
 
@@ -145,6 +151,32 @@ public class Vocab2 extends AppCompatActivity {
             }
 
             return convertView;
+        }
+    }
+
+    //thanks, https://www.youtube.com/watch?v=i-TqNzUryn8
+    //raw isn't in this package
+    public void generateList() {
+        InputStream is = this.getResources().openRawResource(R.raw.default_vocab);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(is, Charset.forName("UTF-8"))
+        );
+
+        String line = "";
+        try {
+            reader.readLine();
+            while (((line = reader.readLine()) != null)) {
+                Log.d(TAG, "Line: " + line);
+                //Split by '|'
+                String[] tokens = line.split(":");
+
+                //Read the data
+                Word sample = new Word(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+                Word.allWords.add(sample);
+            }
+        } catch (IOException e) {
+            Log.wtf(TAG, "Error reading data file on line " + line, e);
+            e.printStackTrace();
         }
     }
 
