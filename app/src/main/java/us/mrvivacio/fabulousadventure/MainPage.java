@@ -14,6 +14,7 @@ import com.example.mylibrary.Word;
 
 public class MainPage extends AppCompatActivity {
 
+
     Button b1, b2;
 
     @Override
