@@ -19,6 +19,9 @@ public class Word implements Comparable {
     //email of the user
     public static String username;
 
+    //checker variable for loading
+    public static boolean loaded = false;
+
     //tag for log messages
     static String TAG = "brett Word";
 
@@ -26,64 +29,6 @@ public class Word implements Comparable {
     //This is the default class arraylist of words
     public static ArrayList<Word> allWords = new ArrayList<Word>();
 
-    /*
-    add(new Word("abundant","adj. present in large quantities", 1));
-            add(new Word("accumulate","v. to gradually collect", 1));
-            add(new Word("berate","v. to scold", 1));
-            add(new Word("bestow","v. to give as a gift", 1));
-            add(new Word("cease","v. to stop", 1));
-            add(new Word("clarify","v. to make clear; to remove confusion", 1));
-            add(new Word("cohesion","n. uniting; becoming one", 1));
-            add(new Word("core","adj. central; of main importance", 1));
-            add(new Word("decay","v. to decline in health or excellence", 1));
-            add(new Word("demonstrate","v. to show", 1));
-            add(new Word("diatribe","n. a sharp criticism or attack", 1));
-            add(new Word("divert","v. to cause a change of course", 1));
-            add(new Word("efficient","adj. maximizing productivity", 1));
-            add(new Word("eloquent","adj. moving speech or writing", 1));
-            add(new Word("evade","v. to avoid or escape", 1));
-            add(new Word("exclusive","adj. not admitting the majority", 1));
-            add(new Word("feasible","adj. possible to do", 1));
-            add(new Word("flaw","n. a feature that ruins the perfection of something", 1));
-            add(new Word("fortify","v. to strengthen", 1));
-            add(new Word("frivolous","adj. unnecessary; of little importance", 1));
-            add(new Word("garbled","adj. communication that is distorted and unclear", 1));
-            add(new Word("grandiose","adj. pompous; overly important", 1));
-            add(new Word("haphazard","adj. lacking planning", 1));
-            add(new Word("hesitate","v. to pause, often due to reluctance", 1));
-            add(new Word("hostile","adj. extremely unfriendly", 1));
-            add(new Word("illiterate","adj. unable to read", 1));
-            add(new Word("impact","n. effect or influence", 1));
-            add(new Word("imply","v. to strongly suggest", 1));
-            add(new Word("incessant","adj. continuing without pause", 1));
-            add(new Word("inclination","n. a preference", 1));
-            add(new Word("indefatigable","adj. untiring", 1));
-            add(new Word("inhibit","v. to hinder or restrain", 1));
-            add(new Word("interpret","v. to explain the meaning of something", 1));
-            add(new Word("jargon","n. words specific to a certain job or group", 1));
-            add(new Word("knack","n. a special talent or skill", 1));
-            add(new Word("lag","v. to fall behind", 1));
-            add(new Word("leery","adj. wary", 1));
-            add(new Word("lenient","adj. merciful; less harsh", 1));
-            add(new Word("major","adj. very important", 1));
-            add(new Word("mend","v. to fix", 1));
-            add(new Word("migrate","v. to move from one place to another", 1));
-            add(new Word("morose","adj. gloomy, depressed", 1));
-            add(new Word("nonchalant","adj. indifferent, unexcited", 1));
-            add(new Word("obtain","v. to get", 1));
-            add(new Word("oppress","v. to unfairly burden", 1));
-            add(new Word("peak","n. the highest or most important point", 1));
-            add(new Word("pertain","v. to relate", 1));
-            add(new Word("prior","adj. previous or earlier", 1));
-            add(new Word("proximity","n. nearness in time or space", 1));
-            add(new Word("rank","n. an official position or station", 1));
-            add(new Word("recapitulate","to give a brief summary", 1));
-            add(new Word("reinforce","v. to strengthen with added support", 1));
-            add(new Word("resist","v. to withstand the effect of", 1));
-            add(new Word("scrutinize","v. to very carefully examine", 1));
-            add(new Word("sparse","adj. thinly scattered", 1));
-            add(new Word("squalid","adj. filthy and unpleasant", 1));
-     */
 
     //The name of the word
     private String word;
