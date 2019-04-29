@@ -12,14 +12,24 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class questionslist extends AppCompatActivity {
+public class questionslist extends MockExam { //AppCompatActivity
 
+
+    /**
+     * QUESTION CONTENTS
+     */
     String[] string_content = new String[21];
     String[] string_choice1 = new String[21];
     String[] string_choice2 = new String[21];
     String[] string_choice3 = new String[21];
     String[] string_choice4 = new String[21];
     public static int[] Choices = new int[21];
+
+    /**
+     * previous question button
+     * next question button
+     * submitAll button
+     */
 
     private Button previousQuestion;
     private Button nextQuestion;
@@ -39,12 +49,27 @@ public class questionslist extends AppCompatActivity {
         String someMessage = "";
         InputStream is = this.getResources().openRawResource(R.raw.sample);
         BufferedReader reader2 = new BufferedReader(new InputStreamReader(is));
+        int passageIDcounter = 0;
+
+        /**
+         * stringBuilder to read from a plain text document
+         */
 
         if (is != null) {
 
             try {
                 while ((someMessage = reader2.readLine()) != null) {
-                    stringBuilder.append(someMessage);
+                    if (someMessage.charAt(0) == '6' &&
+                            someMessage.charAt(1) == '7' &&
+                            someMessage.charAt(2) == '9' &&
+                            someMessage.charAt(3) == '3' &&
+                            someMessage.charAt(4) == '1') {
+                        passageIDcounter++;
+                        continue;
+                    }
+                    if (passageIDcounter == passageID) {
+                        stringBuilder.append(someMessage);
+                    }
                 }
                 is.close();
             }catch(Exception e) {
@@ -150,9 +175,31 @@ public class questionslist extends AppCompatActivity {
         InputStream iss = this.getResources().openRawResource(R.raw.samplequestions);
         BufferedReader reader = new BufferedReader(new InputStreamReader(iss));
 
+        /**
+         * THE READ IN PART FROM THE TXT DOCUMENTS
+         */
+
+        passageIDcounter = 0;
+
         if (iss != null) {
             try {
                 while ((readIn = reader.readLine()) != null) {
+
+                    /**
+                     * find question contents and choice contents
+                     */
+                    if (readIn.charAt(0) == '6' &&
+                            readIn.charAt(1) == '7' &&
+                            readIn.charAt(2) == '9' &&
+                            readIn.charAt(3) == '3' &&
+                            readIn.charAt(4) == '1') {
+                        passageIDcounter++;
+                        continue;
+                    }
+
+                    if (passageIDcounter != passageID) {
+                        continue;
+                    }
 
                     if (readIn.charAt(0) != '(') {
 
@@ -201,13 +248,33 @@ public class questionslist extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param i THE QUESTION ID
+     * @param j THE BIT NUMBER OF CHECKBOX STATUS
+     * @return THE CHANGED BIT NUMBER
+     */
+
     public int myChecked(int i,int j){
         return Choices[i] | j;
     }
 
+    /**
+     *
+     * @param i THE QUESTION ID
+     * @param j THE BIT NUMBER OF CHECKBOX STATUS
+     * @return THE CHANGED BIT NUMBER
+     */
+
     public int myNotChecked(int i,int j){
         return Choices[i] & (15 - j);
     }
+
+
+    /**
+     * HELP SET THE QUESTION'S CHECKBOXES
+     * @param num QUESTION ID and hh
+     */
 
     public void mySet(int num) {
 
@@ -228,6 +295,11 @@ public class questionslist extends AppCompatActivity {
 
     }
 
+    /**
+     * GO TO THE NEXT QUESTION
+     * @param num question ID
+     */
+
     public void goto_previousQuestion(int num){
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -240,6 +312,11 @@ public class questionslist extends AppCompatActivity {
         mySet(num);
     }
 
+    /**
+     * GO TO THE NEXT QUESTION
+     * @param num question ID
+     */
+
     public void goto_nextQuestion(int num) {
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -251,6 +328,10 @@ public class questionslist extends AppCompatActivity {
         checkBox4.setChecked(false);
         mySet(num);
     }
+
+    /**
+     * OPEN THE ANSWERS PAGE
+     */
 
     public void Answerspage() {
         Intent intent = new Intent(questionslist.this, Answerspage.class);
