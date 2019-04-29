@@ -44,15 +44,19 @@ import java.util.List;
 //Activity to display vocab words
 public class Vocab2 extends AppCompatActivity {
 
+    //Tag log
     private static final String TAG = "brett VocabActivity";
+
+    //String to store both read and write permissions
     private String[] Permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+    //integer to store permissions
     private int Permission_All = 1;
+
+    //ListView used to populate the screen
     private ListView list1;
-    ArrayAdapter<String> adapter;
 
-    EditText inputSearch;
-
-
+    //File name for the stored csv file
     final String FILENAME = "customWords.csv";
 
     @Override
@@ -63,27 +67,29 @@ public class Vocab2 extends AppCompatActivity {
         }
 
         Log.d(TAG, "onCreate: entry point");
+
+        //This checks if the words were loaded before -
+        //need to save variable in external class
+        //because the variable will reset on the activity
+        // used to avoid duplicate words
         if (!Word.loaded) {
             generateList();
             Word.loaded = true;
         }
+
+        //String array to hold the words displayed on the screen
         String[] array = new String[5];
-        List testVocab = Word.pullRandom();
-
-        Log.d(TAG, "onCreate: pulledRandom = " + testVocab);
-
-        for (int i = 0; i < testVocab.size(); i++) {
-            array[i] = ((Word) testVocab.get(i)).getWord();
-        }
 
         super.onCreate(savedInstanceState);
 
         Log.d(TAG, "onCreate: super oncreate");
+
         setContentView(R.layout.activity_vocab2);
 
         Log.d(TAG, "onCreate: setting content view again");
 
         //https://www.youtube.com/watch?v=LD2zsCAAVXw
+        //Displays toolbar with the title to the user's email
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,18 +98,24 @@ public class Vocab2 extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: getSupportActionBar");
 
+        //Sets list1 to the listview in the Vocab2 xml
         list1 = (ListView)findViewById(R.id.words);
 
+        //Populates the listview in the xml to display individual word_item xml for each word
+        //The word_item is populated with the list from Word.pullRandom()
+        //MyListAdapter is a custom class created below
         list1.setAdapter(new MyListAdapter(this, R.layout.word_item, Word.pullRandom()));
 
         Log.d(TAG, "onCreate: Setting adapter");
 
+        //Sets the refresh button to repopulate the screen with new Word.pullRandom words
         final Button refresh = findViewById(R.id.refresh);
         refresh.setOnClickListener(v -> {
             Log.d(TAG, "Refresh button clicked");
             list1.setAdapter(new MyListAdapter(this, R.layout.word_item, Word.pullRandom()));
         });
 
+        //Maps the save button to the writeFile function below
         final Button save = findViewById(R.id.save);
         save.setOnClickListener(v -> {
             Log.d(TAG, "Save button clicked");
@@ -115,6 +127,10 @@ public class Vocab2 extends AppCompatActivity {
 
     }
 
+    /**
+     * Launches a new intent to the AddWord class
+     * @param view the button called add word
+     */
     public void add(View view) {
         Log.d(TAG, "toVocab: STARTING ADD INTENT");
         Intent startNewActivity = new Intent(Vocab2.this, AddWord.class);
@@ -123,6 +139,11 @@ public class Vocab2 extends AppCompatActivity {
     }
 
 
+    /**
+     *
+     * @param menu- toolbar inflater with settings
+     * @return returns true if successful
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -130,6 +151,12 @@ public class Vocab2 extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     *
+     * @param item - maps each individual menu item to a function
+     *             Since there is only one item (settings) it launches an intent to settings
+     * @return returns true if successful
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, Settings.class);
@@ -138,35 +165,67 @@ public class Vocab2 extends AppCompatActivity {
     }
 
 
+    /**
+     * Public class made to map each Word object to the ListView
+     */
     public class MyListAdapter extends ArrayAdapter {
         private int layout;
+
+        //Constructor for the class (Same as parent class)
         public MyListAdapter(Context context, int resource, List objects) {
             super(context, resource, objects);
             layout = resource;
         }
 
+        /**
+         *
+         * @param position
+         * @param convertView
+         * @param parent
+         * @return ListView to display- automatic
+         */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            //if there is no current view, we make one
             if(convertView == null) {
+
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
+                //Custom class created below- used to store variables
                 ViewHolder viewHolder = new ViewHolder();
+
+                //Sets the viewHolder variables to their respective views
                 viewHolder.defReference = (TextView) convertView.findViewById(R.id.definition);
                 viewHolder.getDefinitionReference = (Button) convertView.findViewById(R.id.getDefinition);
                 viewHolder.wordReference = (TextView) convertView.findViewById(R.id.actualWord);
+
+                //Sets the values of the textViews to be displayed
                 viewHolder.wordReference.setText(((Word) getItem(position)).getWord());
+
+                //This is set as invisible by default
                 viewHolder.defReference.setText(((Word) getItem(position)).getDefinition());
+
+                //Since getDefinition is a button, we need to add a function to it
                 viewHolder.getDefinitionReference.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //sets the visibility of the definition to visible
                         viewHolder.defReference.setVisibility(View.VISIBLE);
+
+                        //must decrement the mastery of the word twice because presenting the
+                        //word on the screen increments the mastery automatically
+                        //Net decrease == 1 instead of 0 because of this
                         ((Word) getItem(position)).decMastery();
                         ((Word) getItem(position)).decMastery();
                     }
                 });
+                //sets the tags of the view passed
                 convertView.setTag(viewHolder);
             } else {
+                //Since the view is already made, we just need to retrieve the tags and modify them
                 ViewHolder mainViewHolder = (ViewHolder) convertView.getTag();
+
+                //Same code as above
                 mainViewHolder.wordReference.setText(((Word) getItem(position)).getWord());
                 mainViewHolder.defReference.setText(((Word) getItem(position)).getDefinition());
                 mainViewHolder.getDefinitionReference.setOnClickListener(new View.OnClickListener() {
@@ -178,20 +237,37 @@ public class Vocab2 extends AppCompatActivity {
                     }
                 });
             }
-
+            //returns the view to the ListView knows how to display the information
             return convertView;
         }
     }
 
 
+    /**
+     * Custom class used to store buttons and textViews for the listView
+     */
+    public class ViewHolder {
+        TextView wordReference;
+        TextView defReference;
+        Button getDefinitionReference;
+    }
 
 
     //Thanks, https://www.youtube.com/watch?v=ZtVcT38_7Gs
+
+    /**
+     * Writes the words stored in allWords (ArrayList in the Word class)
+     * to a csv file in external storage
+     */
     public void writeFile() {
+        //Sets the headers for the csv
+        //Needs to be a long string to write to the file
         String entry = "Word:Definition:Mastery\n";
 
+        //Copies the allWords ArrayList
         ArrayList<Word> copy = Word.allWords;
 
+        //Adds each individual word to the big string according to the header
         for (Word current : copy) {
             String toApp = current.getWord() + ":" +
                     current.getDefinition() + ":" +
@@ -199,12 +275,22 @@ public class Vocab2 extends AppCompatActivity {
             entry += toApp;
         }
 
-        try {
-            FileOutputStream out = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-            out.write(entry.getBytes());
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        //Checks permissions again before going
+        if (hasPermissions(this, Permissions)) {
+            //Uses try in case there is a file output
+            try {
+                //Makes a new file or overwrites the current file
+                FileOutputStream out = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                //Writes the string as bytes
+                out.write(entry.getBytes());
+                //Closes the file stream
+                out.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            //Lets user know they don't have the permissions
+            Toast.makeText(getApplicationContext(), "You don't have the required permissions", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -216,25 +302,34 @@ public class Vocab2 extends AppCompatActivity {
     public void generateList() {
 
         //thanks, https://www.youtube.com/watch?v=THPUrQGv8Ww
+        //Checks permissions
         if (hasPermissions(this, Permissions)) {
+            //Uses try in case the file was never created before
             try {
-                //File textFile = new File(Environment.getExternalStorageDirectory(), FILENAME);
+                //thanks, https://www.youtube.com/watch?v=4HI1Sf_2F5Y
+                //Opens file
                 FileInputStream fis = openFileInput(FILENAME);
                 Log.d(TAG, "Successfully loaded in file");
                 if (fis != null) {
+                    //Reads in the files as a whole
                     InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                    //Reads in the file line by line to parse individually
                     BufferedReader reader = new BufferedReader(isr);
 
                     String line = "";
                     try {
+                        //skip the header
                         reader.readLine();
+
+                        //Reads in each of the words and adds them to allWords in Words class
                         while (((line = reader.readLine()) != null)) {
                             Log.d(TAG, "Line: " + line);
-                            //Split by '|'
+                            //Split by ':'
                             String[] tokens = line.split(":");
 
-                            //Read the data
+                            //Read the data by Word:Definition:Mastery
                             Word sample = new Word(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+                            //Adds the Word to allWords
                             Word.allWords.add(sample);
                         }
                     } catch (IOException e) {
@@ -244,13 +339,17 @@ public class Vocab2 extends AppCompatActivity {
                 }
             } catch(FileNotFoundException e) {
                 //thanks, https://www.youtube.com/watch?v=i-TqNzUryn8
+                //So if the file is not found- just read in the csv from raw
                 Log.d(TAG, "File not made yet");
+                //Reads in the raw file as a whole
                 InputStream is = this.getResources().openRawResource(R.raw.default_vocab);
+                //Reads in raw line by line
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(is, Charset.forName("UTF-8"))
                 );
 
                 String line = "";
+                //Same process as reading in file
                 try {
                     reader.readLine();
                     while (((line = reader.readLine()) != null)) {
@@ -269,6 +368,7 @@ public class Vocab2 extends AppCompatActivity {
             }
 
         } else {
+            //Same code as above else statement (reads in csv from raw)
             InputStream is = this.getResources().openRawResource(R.raw.default_vocab);
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(is, Charset.forName("UTF-8"))
@@ -293,15 +393,17 @@ public class Vocab2 extends AppCompatActivity {
         }
     }
 
-    public class ViewHolder {
-        TextView wordReference;
-        TextView defReference;
-        Button getDefinitionReference;
-    }
-
+    /**
+     *
+     * @param context
+     * @param permissions string containing the permissions
+     * @return true if all permissions are satisfied
+     */
     public static boolean hasPermissions(Context context, String... permissions){
 
+        //Checks build version
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M && context!=null && permissions!=null){
+            //Checks each permission individually
             for(String permission: permissions) {
                 if(ActivityCompat.checkSelfPermission(context, permission)!= PackageManager.PERMISSION_GRANTED) {
                     return false;

@@ -18,8 +18,11 @@ import com.example.mylibrary.Word;
 public class AddWord extends AppCompatActivity {
 
     private static final String TAG = "brett AddWord";
+    //TextBox for the word
     private EditText word;
+    //TextBox for the definition
     private EditText definition;
+    //Button to submit
     private Button submit;
 
     @Override
@@ -30,8 +33,8 @@ public class AddWord extends AppCompatActivity {
         setContentView(R.layout.activity_add_word);
         Log.d(TAG, "onCreate: super oncreate");
 
-
         //https://www.youtube.com/watch?v=LD2zsCAAVXw
+        //Displays toolbar with the title to the user's email
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,10 +43,12 @@ public class AddWord extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: getSupportActionBar");
 
+        //Maps the EditText and buttons to variables
         word = (EditText) findViewById(R.id.editWord);
         definition = (EditText) findViewById(R.id.editDefinition);
         submit = (Button) findViewById(R.id.submit);
 
+        //On click, adds word to allWords and displays a toast confirmation
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +60,10 @@ public class AddWord extends AppCompatActivity {
         });
     }
 
+    /**
+     * @param menu- toolbar inflater with settings
+     * @return returns true if successful
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -62,6 +71,11 @@ public class AddWord extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * @param item - maps each individual menu item to a function
+     *             Since there is only one item (settings) it launches an intent to settings
+     * @return returns true if successful
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, Settings.class);

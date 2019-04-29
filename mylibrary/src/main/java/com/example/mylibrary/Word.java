@@ -136,7 +136,6 @@ public class Word implements Comparable {
     }
 
     /**
-     *
      * @return The priority of a word
      */
     public int getPriority() {
@@ -155,6 +154,9 @@ public class Word implements Comparable {
         Collections.sort(allWords);
     }
 
+    /**
+     * @param newStaleCount sets StaleCount
+     */
     public void setStaleCount(int newStaleCount) {
         staleCount = newStaleCount;
     }
@@ -247,9 +249,10 @@ public class Word implements Comparable {
      */
     public static List<Word> pullRandom() {
         Log.d(TAG, "pullRandom: entered");
+        //updates words (sorts Allwords and decrements stalecount of all words)
         updateWords();
         Log.d(TAG, printPriorities());
-        Log.d(TAG, "pullRandom: Udpated words");
+        Log.d(TAG, "pullRandom: Updated words");
 
         List<Word> toRet = new ArrayList<>();
 
