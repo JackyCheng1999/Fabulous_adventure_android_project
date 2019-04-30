@@ -16,12 +16,18 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     EditText e1, e2, e3;
 
     Button b1, b2, b3;
+
+    String fileName;
 
     public String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "WordForce";
 
@@ -93,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         if (chkmail == true) {
                             boolean insert = db.insert(s1, s2);
                             if (insert == true) {
+                                writeFile();
                                 Toast.makeText(getApplicationContext(), "Registered  Successfully", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -116,5 +125,45 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public boolean checkPermission(String permission) {
+        int check = ContextCompat.checkSelfPermission(this, permission);
+        return (check == PackageManager.PERMISSION_GRANTED);
+    }
+
+    public void writeFile() {
+        if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
+            try {
+                FileOutputStream fos = new FileOutputStream(textFile);
+                fos.write("1".getBytes());
+                fos.close();
+                Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isExternalStorageWritable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Writable");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isExternalStorageReadable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+            || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Readable");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
