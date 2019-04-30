@@ -22,7 +22,7 @@ public class MockExam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_exam);
 
-        totalPassage = 3;
+        totalPassage = 9;
 
         Beginexam = (Button) findViewById(R.id.Beginexam);
         seekBar = (SeekBar) findViewById(R.id.seekBar2);

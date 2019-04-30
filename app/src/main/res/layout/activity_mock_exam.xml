@@ -30,15 +30,32 @@
         android:id="@+id/seekBar2"
         android:layout_width="266dp"
         android:layout_height="66dp"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="129dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="134dp"
-        android:layout_height="32dp"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="225dp" />
+        android:layout_height="85dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:fontFamily="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/Beginexam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+        app:layout_constraintVertical_bias="0.063" />
 
 </android.support.constraint.ConstraintLayout>

@@ -16,14 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="24sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/questionContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="36sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <CheckBox
@@ -31,46 +31,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CheckBox"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CheckBox"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CheckBox"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CheckBox"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/previousQuestion"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="previous question" />
+            android:text="previous question"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/nextQuestion"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="next question" />
+            android:text="next question"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/submitAll"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit All and Finish" />
+            android:text="Submit All and Finish"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
 
     </LinearLayout>
 </ScrollView>
