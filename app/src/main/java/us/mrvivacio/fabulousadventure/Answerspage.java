@@ -25,6 +25,9 @@ public class Answerspage extends questionslist {
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
         rating = (TextView) findViewById(R.id.textView);
 
+        /**
+         * The following part is to find out the answers the user made in the reading
+         */
         for (int i = 1;i <= s; i++) {
             if (Choices[i] == 0) {
                 yourAnswer.append("?");
@@ -49,6 +52,10 @@ public class Answerspage extends questionslist {
         InputStream is = this.getResources().openRawResource(R.raw.answers);
         BufferedReader reader2 = new BufferedReader(new InputStreamReader(is));
         int passageIDcounter = 0;
+
+        /**
+         * find out the correct answer for the reading
+         */
 
         if (is != null) {
 
@@ -77,6 +84,11 @@ public class Answerspage extends questionslist {
         int linshians = 0;
         int correctness = 0;
 
+        /**
+         * Comparing the correct answers to the user's answers
+         * find out the correctness
+         */
+
         for (int i = 0; i < someMessage.length(); i++) {
             if (someMessage.charAt(i) == ' ') {
                 if (linshians == Choices[j]) {
@@ -101,6 +113,10 @@ public class Answerspage extends questionslist {
         if (linshians == Choices[j]) {
             correctness++;
         }
+
+        /**
+         * change the seekbar to show the percentage the user made correct
+         */
         progressBar.setProgress(correctness * 100 / s);
         rating.setText("YOU GOT " + correctness + "/" + s);
     }
