@@ -3,22 +3,16 @@ package us.mrvivacio.fabulousadventure;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.mylibrary.Word;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class questionslist extends AppCompatActivity {
+public class questionslist extends MockExam { //AppCompatActivity
 
 
     /**
@@ -31,12 +25,12 @@ public class questionslist extends AppCompatActivity {
     String[] string_choice4 = new String[21];
     public static int[] Choices = new int[21];
 
-
     /**
-     * PREVIOUS QUESTION BUTTON
-     * NEXT QURSTION BUTTON
-     * SUBMITALL BUTTON
+     * previous question button
+     * next question button
+     * submitAll button
      */
+
     private Button previousQuestion;
     private Button nextQuestion;
     private Button submitAll;
@@ -46,31 +40,36 @@ public class questionslist extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionslist);
-
-        //https://www.youtube.com/watch?v=LD2zsCAAVXw
-        Toolbar toolbar = findViewById(R.id.action_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(Word.username);
 
         TextView MessageWindow = (TextView) findViewById(R.id.messageWindow2);
         StringBuilder stringBuilder = new StringBuilder();
         String someMessage = "";
         InputStream is = this.getResources().openRawResource(R.raw.sample);
         BufferedReader reader2 = new BufferedReader(new InputStreamReader(is));
-
+        int passageIDcounter = 0;
 
         /**
-         * STRING BUILDER TO READ FROM THE PLAIN TEXT DOCUMENT FOR ARTICLES
+         * stringBuilder to read from a plain text document
          */
+
         if (is != null) {
 
             try {
                 while ((someMessage = reader2.readLine()) != null) {
-                    stringBuilder.append(someMessage);
+                    if (someMessage.charAt(0) == '6' &&
+                            someMessage.charAt(1) == '7' &&
+                            someMessage.charAt(2) == '9' &&
+                            someMessage.charAt(3) == '3' &&
+                            someMessage.charAt(4) == '1') {
+                        passageIDcounter++;
+                        continue;
+                    }
+                    if (passageIDcounter == passageID) {
+                        stringBuilder.append(someMessage);
+                    }
                 }
                 is.close();
             }catch(Exception e) {
@@ -87,9 +86,6 @@ public class questionslist extends AppCompatActivity {
 
         x = 1;
 
-        /**
-         * CHECKBOX CHANGER
-         */
         previousQuestion = (Button) findViewById(R.id.previousQuestion);
         previousQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,16 +176,30 @@ public class questionslist extends AppCompatActivity {
         BufferedReader reader = new BufferedReader(new InputStreamReader(iss));
 
         /**
-         * THE READ IN PART FROM THE TXT DOCUMENT
+         * THE READ IN PART FROM THE TXT DOCUMENTS
          */
+
+        passageIDcounter = 0;
 
         if (iss != null) {
             try {
                 while ((readIn = reader.readLine()) != null) {
 
                     /**
-                     * FIND QUESTION CONTENT AND CHOICE CONTENTS
+                     * find question contents and choice contents
                      */
+                    if (readIn.charAt(0) == '6' &&
+                            readIn.charAt(1) == '7' &&
+                            readIn.charAt(2) == '9' &&
+                            readIn.charAt(3) == '3' &&
+                            readIn.charAt(4) == '1') {
+                        passageIDcounter++;
+                        continue;
+                    }
+
+                    if (passageIDcounter != passageID) {
+                        continue;
+                    }
 
                     if (readIn.charAt(0) != '(') {
 
@@ -238,18 +248,15 @@ public class questionslist extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+    /**
+     *
+     * @param i THE QUESTION ID
+     * @param j THE BIT NUMBER OF CHECKBOX STATUS
+     * @return THE CHANGED BIT NUMBER
+     */
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-        return super.onOptionsItemSelected(item);
+    public int myChecked(int i,int j){
+        return Choices[i] | j;
     }
 
     /**
@@ -258,24 +265,17 @@ public class questionslist extends AppCompatActivity {
      * @param j THE BIT NUMBER OF CHECKBOX STATUS
      * @return THE CHANGED BIT NUMBER
      */
-    public int myChecked(int i,int j){
-        return Choices[i] | j;
-    }
 
-    /**
-     *
-      * @param i THE QUESTION ID
-     * @param j THE BIT NUMBER OF CHECKBOX STATUS
-     * @return THE CHANGED BIT NUMBER
-     */
     public int myNotChecked(int i,int j){
         return Choices[i] & (15 - j);
     }
 
+
     /**
-     * HELP THE QUESTION'S CHECKBOXES
-     * @param num QUESTION ID
+     * HELP SET THE QUESTION'S CHECKBOXES
+     * @param num QUESTION ID and hh
      */
+
     public void mySet(int num) {
 
         TextView questionContent = (TextView) findViewById(R.id.questionContent);
@@ -296,9 +296,10 @@ public class questionslist extends AppCompatActivity {
     }
 
     /**
-     * HELP SET THE QUESTION'S CHECKBOXES
-     * @param num QUESTION ID
+     * GO TO THE NEXT QUESTION
+     * @param num question ID
      */
+
     public void goto_previousQuestion(int num){
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -312,9 +313,10 @@ public class questionslist extends AppCompatActivity {
     }
 
     /**
-     * GOTO THE NEXT QUESTION
-     * @param num QUESTION ID
+     * GO TO THE NEXT QUESTION
+     * @param num question ID
      */
+
     public void goto_nextQuestion(int num) {
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -330,6 +332,7 @@ public class questionslist extends AppCompatActivity {
     /**
      * OPEN THE ANSWERS PAGE
      */
+
     public void Answerspage() {
         Intent intent = new Intent(questionslist.this, Answerspage.class);
         startActivity(intent);

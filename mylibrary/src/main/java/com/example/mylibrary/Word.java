@@ -19,8 +19,8 @@ public class Word implements Comparable {
     //email of the user
     public static String username = "Anonymous User";
 
-    //how difficult a word is
-    public static int quality;
+    //This is how difficult (as defined by the user) a word is. The scale is from 0 to 5. Here it is the multiple of the reciprocal of mastery.
+    public static float quality;
 
     //checker variable for loading
     public static boolean loaded = false;
