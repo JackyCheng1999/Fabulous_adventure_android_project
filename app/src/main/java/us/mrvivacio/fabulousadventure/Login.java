@@ -46,6 +46,9 @@ public class Login extends AppCompatActivity {
         e2 = (EditText) findViewById(R.id.password2);
         b1 = (Button) findViewById(R.id.login);
 
+        /**
+         * login checking function with database helper. Once the login process is successful, we will parse the certain user's data file and update his priority value.
+         */
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +84,10 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /**
+     * checking function checking if we can read contents from the external storage.
+     * @return a boolean value telling us whether we can read contents from the external storage.
+     */
     private boolean isExternalStorageReadable() {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
@@ -91,6 +98,9 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /**
+     * A function that parse the user's data file. The user data file is saved with lines of words plus " " plus the string version of the priority value.
+     */
     public void readFile() {
         if (isExternalStorageReadable()) {
             StringBuilder sb = new StringBuilder();
@@ -117,6 +127,9 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /**
+     * If the login process is successful, we will call this function, to upadate the priority value for the certain user.
+     */
     public void priorityUpdate() {
         for (int i = 0; i < readIn.size(); i++) {
             for (int j = 0; j < Word.allWords.size(); j++) {

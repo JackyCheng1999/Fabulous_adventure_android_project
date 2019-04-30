@@ -30,7 +30,7 @@
     <SeekBar
         android:id="@+id/seekBar2"
         style="@android:style/Widget.SeekBar"
-        android:layout_width="266dp"
+        android:layout_width="430dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="140dp"
@@ -42,13 +42,11 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="134dp"
+        android:layout_width="250dp"
         android:layout_height="85dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"

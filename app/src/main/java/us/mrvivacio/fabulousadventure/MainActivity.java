@@ -101,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * checking function for registering an account with database helper. If the registration is successful, we will call the writeFileInitial function, which generate the initial user's data file for a user.
+         */
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,10 +144,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * function checking whether we have permission from manifest
+     * @param permission permission name
+     * @return a boolean value tells us whether we have the permission.
+     */
     public boolean checkPermission(String permission) {
         int check = ContextCompat.checkSelfPermission(this, permission);
         return (check == PackageManager.PERMISSION_GRANTED);
     }
+
 
     public void writeFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -168,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This is the function that initialize the user's data text document.All words' priority value is set to one.
+     */
     public void writeFileInitial() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
@@ -191,7 +203,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * a function checking whether we can write things into external storage.
+     * @return a boolean value telling us whether we can or cannot write things into external storage.
+     */
     private boolean isExternalStorageWritable() {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             Log.i("State", "Yes, Writable");
@@ -211,6 +226,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * copy from Brett Patterson's branch, generate the word list at rhe start of the application to change these priority value in advamce.
+     */
     public void generateList() {
 
         //thanks, https://www.youtube.com/watch?v=THPUrQGv8Ww
