@@ -1,9 +1,13 @@
 package us.mrvivacio.fabulousadventure;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +18,13 @@ import android.widget.Toast;
 
 import com.example.mylibrary.Word;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity {
 
     EditText e1, e2;
@@ -21,6 +32,10 @@ public class Login extends AppCompatActivity {
     Button b1;
 
     DatabaseHelper db;
+
+    String fileName;
+
+    public ArrayList<String> readIn = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +46,6 @@ public class Login extends AppCompatActivity {
         e2 = (EditText) findViewById(R.id.password2);
         b1 = (Button) findViewById(R.id.login);
 
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +54,9 @@ public class Login extends AppCompatActivity {
                 boolean chkemailpass = db.emailpassword(email, password);
                 if (chkemailpass == true) {
                     Word.username = email;
+                    fileName = Word.username + ".txt";
+                    readFile();
+                    priorityUpdate();
                     Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainPage.class);
                     startActivity(intent);
@@ -49,4 +66,65 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
+    public boolean checkPermission(String permission) {
+        int check = ContextCompat.checkSelfPermission(this, permission);
+        return (check == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean isExternalStorageWritable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Writable");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isExternalStorageReadable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Readable");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void readFile() {
+        if (isExternalStorageReadable()) {
+            StringBuilder sb = new StringBuilder();
+            try {
+                File textFile = new File(Environment.getExternalStorageDirectory(), fileName);
+                FileInputStream fis = new FileInputStream(textFile);
+
+                if (fis != null) {
+                    InputStreamReader isr = new InputStreamReader(fis);
+                    BufferedReader buff = new BufferedReader(isr);
+
+                    String line = null;
+                    while((line = buff.readLine()) != null) {
+                        sb.append(line.toString());
+                        readIn.add(line.toString());
+                    }
+                    fis.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this, "Cannot Read from External Storage.",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void priorityUpdate() {
+        for (int i = 0; i < readIn.size(); i++) {
+            for (int j = 0; j < Word.allWords.size(); j++) {
+                if (readIn.get(i).split(" ")[0].equals(Word.allWords.get(j).getWord())) {
+                    Word.allWords.get(j).pUpdate(Integer.parseInt(readIn.get(i).split(" ")[1]));
+                }
+            }
+        }
+    }
+
 }

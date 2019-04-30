@@ -131,6 +131,16 @@ public class Word implements Comparable {
     }
 
     /**
+     * function used in initialization
+     * @param value new value for priority
+     */
+    public void pUpdate(int value) {
+        priority = value;
+    }
+
+
+
+    /**
      * Updates the priority of a word
      * Priority is the product of the mastery and staleCount
      */

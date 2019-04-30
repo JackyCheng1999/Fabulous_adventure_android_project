@@ -24,10 +24,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mylibrary.Word;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     Button b1, b2, b3;
 
-    String fileName;
+    final String FILENAME = "customWords.csv";
+
+    private static final String TAG = "brett VocabActivity";
+
+    private String[] Permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     public String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "WordForce";
 
@@ -69,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         b3 = (Button) findViewById(R.id.skip);
 
+        generateList();
 
 
         b3.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         if (chkmail == true) {
                             boolean insert = db.insert(s1, s2);
                             if (insert == true) {
-                                writeFile();
+                                writeFileInitial();
                                 Toast.makeText(getApplicationContext(), "Registered  Successfully", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -137,7 +151,13 @@ public class MainActivity extends AppCompatActivity {
             File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
             try {
                 FileOutputStream fos = new FileOutputStream(textFile);
-                fos.write("1".getBytes());
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                for (int i = 0; i < Word.allWords.size(); i++) {
+                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));
+                    bw.newLine();
+                }
+                bw.close();
+                //fos.write("1".getBytes());
                 fos.close();
                 Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
@@ -147,6 +167,30 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void writeFileInitial() {
+        if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
+            try {
+                FileOutputStream fos = new FileOutputStream(textFile);
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                for (int i = 0; i < Word.allWords.size(); i++) {
+                    bw.write(Word.allWords.get(i).getWord() + " " + "1");
+                    bw.newLine();
+                }
+                bw.close();
+                //fos.write("1".getBytes());
+                fos.close();
+                Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     private boolean isExternalStorageWritable() {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -164,6 +208,100 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void generateList() {
+
+        //thanks, https://www.youtube.com/watch?v=THPUrQGv8Ww
+        //Checks permissions
+        if (hasPermissions(this, Permissions)) {
+            //Uses try in case the file was never created before
+            try {
+                //thanks, https://www.youtube.com/watch?v=4HI1Sf_2F5Y
+                //Opens file
+                FileInputStream fis = openFileInput(FILENAME);
+                Log.d(TAG, "Successfully loaded in file");
+                if (fis != null) {
+                    //Reads in the files as a whole
+                    InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                    //Reads in the file line by line to parse individually
+                    BufferedReader reader = new BufferedReader(isr);
+
+                    String line = "";
+                    try {
+                        //skip the header
+                        reader.readLine();
+
+                        //Reads in each of the words and adds them to allWords in Words class
+                        while (((line = reader.readLine()) != null)) {
+                            Log.d(TAG, "Line: " + line);
+                            //Split by ':'
+                            String[] tokens = line.split(":");
+
+                            //Read the data by Word:Definition:Mastery
+                            Word sample = new Word(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+                            //Adds the Word to allWords
+                            Word.allWords.add(sample);
+                        }
+                    } catch (IOException e) {
+                        Log.wtf(TAG, "Error reading data file on line " + line, e);
+                        e.printStackTrace();
+                    }
+                }
+            } catch(FileNotFoundException e) {
+                //thanks, https://www.youtube.com/watch?v=i-TqNzUryn8
+                //So if the file is not found- just read in the csv from raw
+                Log.d(TAG, "File not made yet");
+                //Reads in the raw file as a whole
+                InputStream is = this.getResources().openRawResource(R.raw.default_vocab);
+                //Reads in raw line by line
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, Charset.forName("UTF-8"))
+                );
+
+                String line = "";
+                //Same process as reading in file
+                try {
+                    reader.readLine();
+                    while (((line = reader.readLine()) != null)) {
+                        Log.d(TAG, "Line: " + line);
+                        //Split by '|'
+                        String[] tokens = line.split(":");
+
+                        //Read the data
+                        Word sample = new Word(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+                        Word.allWords.add(sample);
+                    }
+                } catch (IOException error) {
+                    Log.wtf(TAG, "Error reading data file on line " + line, error);
+                    e.printStackTrace();
+                }
+            }
+
+        } else {
+            //Same code as above else statement (reads in csv from raw)
+            InputStream is = this.getResources().openRawResource(R.raw.default_vocab);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(is, Charset.forName("UTF-8"))
+            );
+
+            String line = "";
+            try {
+                reader.readLine();
+                while (((line = reader.readLine()) != null)) {
+                    Log.d(TAG, "Line: " + line);
+                    //Split by '|'
+                    String[] tokens = line.split(":");
+
+                    //Read the data
+                    Word sample = new Word(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+                    Word.allWords.add(sample);
+                }
+            } catch (IOException e) {
+                Log.wtf(TAG, "Error reading data file on line " + line, e);
+                e.printStackTrace();
+            }
         }
     }
 }
