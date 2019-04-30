@@ -20,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -209,6 +211,9 @@ public class Vocab2 extends AppCompatActivity {
                 viewHolder.getDefinitionReference.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        //bounce animation for the getDefinition Button
+                        Animation anime = AnimationUtils.loadAnimation(Vocab2.this, R.anim.bounce);
+                        viewHolder.getDefinitionReference.startAnimation(anime);
                         //sets the visibility of the definition to visible
                         viewHolder.defReference.setVisibility(View.VISIBLE);
 

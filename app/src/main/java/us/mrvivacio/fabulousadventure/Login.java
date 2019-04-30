@@ -3,6 +3,10 @@ package us.mrvivacio.fabulousadventure;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +30,8 @@ public class Login extends AppCompatActivity {
         e1 = (EditText) findViewById(R.id.email2);
         e2 = (EditText) findViewById(R.id.password2);
         b1 = (Button) findViewById(R.id.login);
+
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

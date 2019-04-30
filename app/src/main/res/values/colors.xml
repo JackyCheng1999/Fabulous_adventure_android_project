@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="btColor">#f4de15</color>
+    <color name="gainsboro">#dcdcdc</color>
+    <color name="palegreen">#98fb98</color>
+    <color name="olivedrab">#6b8e23</color>
+    <color name="darkgray">#a9a9a9</color>
+    <color name="blue">#396dbf</color>
+    <color name="seagreen">#2e8b57</color>
+    <color name="tomato">#ff6347</color>
+
 </resources>

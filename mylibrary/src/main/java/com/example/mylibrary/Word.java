@@ -17,7 +17,10 @@ import java.io.InputStreamReader;
  */
 public class Word implements Comparable {
     //email of the user
-    public static String username;
+    public static String username = "Anonymous User";
+
+    //how difficult a word is
+    public static int quality;
 
     //checker variable for loading
     public static boolean loaded = false;
