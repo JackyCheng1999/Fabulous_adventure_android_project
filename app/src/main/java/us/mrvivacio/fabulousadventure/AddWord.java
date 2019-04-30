@@ -1,5 +1,9 @@
 package us.mrvivacio.fabulousadventure;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +18,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mylibrary.Word;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class AddWord extends AppCompatActivity {
 
@@ -55,6 +65,7 @@ public class AddWord extends AppCompatActivity {
                 String wordInfo = word.getText().toString();
                 String defInfo = definition.getText().toString();
                 Word.allWords.add(new Word(wordInfo, defInfo, 1));
+                writeFile();
                 Toast.makeText(getApplicationContext(), "Word Added", Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,5 +92,41 @@ public class AddWord extends AppCompatActivity {
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean checkPermission(String permission) {
+        int check = ContextCompat.checkSelfPermission(this, permission);
+        return (check == PackageManager.PERMISSION_GRANTED);
+    }
+
+    public void writeFile() {
+        if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            File textFile = new File(Environment.getExternalStorageDirectory(), Word.username + ".txt");
+            try {
+                FileOutputStream fos = new FileOutputStream(textFile);
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                for (int i = 0; i < Word.allWords.size(); i++) {
+                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));
+                    bw.newLine();
+                }
+                bw.close();
+                //fos.write("1".getBytes());
+                fos.close();
+                Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isExternalStorageWritable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Writable");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

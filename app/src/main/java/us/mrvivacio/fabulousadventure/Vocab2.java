@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.UserDictionary;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 import com.example.mylibrary.Word;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,6 +41,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,6 +118,7 @@ public class Vocab2 extends AppCompatActivity {
         refresh.setOnClickListener(v -> {
             Log.d(TAG, "Refresh button clicked");
             list1.setAdapter(new MyListAdapter(this, R.layout.word_item, Word.pullRandom()));
+            writeTextFile();
         });
 
         //Maps the save button to the writeFile function below
@@ -222,6 +226,7 @@ public class Vocab2 extends AppCompatActivity {
                         //Net decrease == 1 instead of 0 because of this
                         ((Word) getItem(position)).decMastery();
                         ((Word) getItem(position)).decMastery();
+                        writeTextFile();
                     }
                 });
                 //sets the tags of the view passed
@@ -239,6 +244,7 @@ public class Vocab2 extends AppCompatActivity {
                         mainViewHolder.defReference.setVisibility(View.VISIBLE);
                         ((Word) getItem(position)).decMastery();
                         ((Word) getItem(position)).decMastery();
+                        writeTextFile();
                     }
                 });
             }
@@ -416,5 +422,40 @@ public class Vocab2 extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public boolean checkPermission(String permission) {
+        int check = ContextCompat.checkSelfPermission(this, permission);
+        return (check == PackageManager.PERMISSION_GRANTED);
+    }
+
+    public void writeTextFile() {
+        if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            File textFile = new File(Environment.getExternalStorageDirectory(), Word.username + ".txt");
+            try {
+                FileOutputStream fos = new FileOutputStream(textFile);
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                for (int i = 0; i < Word.allWords.size(); i++) {
+                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));
+                    bw.newLine();
+                }
+                bw.close();
+                //fos.write("1".getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isExternalStorageWritable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            Log.i("State", "Yes, Writable");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

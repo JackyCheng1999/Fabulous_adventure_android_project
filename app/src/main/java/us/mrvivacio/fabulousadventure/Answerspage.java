@@ -45,6 +45,7 @@ public class Answerspage extends questionslist {
                 yourAnswer.append("D");
             }
             yourAnswer.append(" ");
+            Choices[i] = 0;
         }
 
         String someMessage = "";
