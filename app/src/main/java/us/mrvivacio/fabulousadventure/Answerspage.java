@@ -27,7 +27,7 @@ public class Answerspage extends questionslist {
 
         for (int i = 1;i <= s; i++) {
             if (Choices[i] == 0) {
-                yourAnswer.append("N/A");
+                yourAnswer.append("?");
             }
             if ((Choices[i] & 8) != 0) {
                 yourAnswer.append("A");

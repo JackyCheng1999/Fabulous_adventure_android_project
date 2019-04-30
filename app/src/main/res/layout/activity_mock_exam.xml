@@ -11,23 +11,25 @@
 
     <Button
         android:id="@+id/Beginexam"
-        android:layout_width="353dp"
-        android:layout_height="56dp"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Small"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="160dp"
+        android:background="@android:drawable/checkbox_on_background"
         android:onClick="onClick1"
-        android:text="BEGIN EXAM"
-        android:textSize="24sp"
+        android:textAppearance="@android:style/TextAppearance.Holo.SearchResult.Title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <SeekBar
         android:id="@+id/seekBar2"
+        style="@android:style/Widget.SeekBar"
         android:layout_width="266dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
@@ -35,6 +37,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:thumb="@android:color/holo_blue_bright"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:fontFamily="monospace"
         app:layout_constraintBottom_toTopOf="@+id/Beginexam"
