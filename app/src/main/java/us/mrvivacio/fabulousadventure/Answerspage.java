@@ -11,6 +11,13 @@ import java.io.InputStreamReader;
 
 public class Answerspage extends questionslist {
 
+    /**
+     * yourAnswer: the text to show the user's answers
+     * correctAnswer: the text to show the correct answers
+     * progressBar: the bar to show the percentage of the correct answers made by the user
+     * rating: the rating for progress bar
+     */
+
     private TextView yourAnswer;
     private TextView correctAnswer;
     private ProgressBar progressBar;
@@ -19,6 +26,13 @@ public class Answerspage extends questionslist {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /**
+         * yourAnswer: find by ID of yourAnswer
+         * correctAnswer: find by ID of correctAnswer
+         * progressBar: find by ID of progressBar2
+         * rating: find by ID of textview
+         */
         setContentView(R.layout.activity_answerspage);
         yourAnswer = (TextView) findViewById(R.id.yourAnswer);
         correctAnswer = (TextView) findViewById(R.id.correctAnswer);
@@ -47,6 +61,11 @@ public class Answerspage extends questionslist {
             yourAnswer.append(" ");
         }
 
+        /**
+         * someMessage for reading the correct data
+         * Using an input stream to read
+         */
+
         String someMessage = "";
         //String someMessage2 = "";
         InputStream is = this.getResources().openRawResource(R.raw.answers);
@@ -61,6 +80,9 @@ public class Answerspage extends questionslist {
 
             try {
                 while ((someMessage = reader2.readLine()) != null) {
+                    /**
+                     * find out the code for each set of answers
+                     */
                     if (someMessage.charAt(0) == '6' &&
                             someMessage.charAt(1) == '7' &&
                             someMessage.charAt(2) == '9' &&
