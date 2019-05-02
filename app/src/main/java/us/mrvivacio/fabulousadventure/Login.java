@@ -56,6 +56,9 @@ public class Login extends AppCompatActivity {
                 String password = e2.getText().toString();
                 boolean chkemailpass = db.emailpassword(email, password);
                 if (chkemailpass == true) {
+                    /**
+                     * everytime a user successfully log in, change update the attribute value for each word in the arraylist Wors.allwords according to the user's past data.
+                     */
                     Word.username = email;
                     fileName = Word.username + ".txt";
                     readFile();
@@ -85,7 +88,7 @@ public class Login extends AppCompatActivity {
     }
 
     /**
-     * A function that parse the user's data file. The user data file is saved with lines of words plus " " plus the string version of the priority value.
+     * function parsing the user data file. read it in line as string, and put into an arraylist.
      */
     public void readFile() {
         if (isExternalStorageReadable()) {
@@ -114,7 +117,7 @@ public class Login extends AppCompatActivity {
     }
 
     /**
-     * If the login process is successful, we will call this function, to upadate the priority value for the certain user.
+     * If the login process is successful, we will call this function, to upadate the priority, mastery, and stalecount value for each words for the certain user.
      */
     public void allUpdate() {
         for (int i = 0; i < readIn.size(); i++) {

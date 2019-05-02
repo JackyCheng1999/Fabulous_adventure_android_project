@@ -67,6 +67,9 @@ public class AddWord extends AppCompatActivity {
                 String wordInfo = word.getText().toString();
                 String defInfo = definition.getText().toString();
                 Word.allWords.add(new Word(wordInfo, defInfo, 1));
+                /**
+                 * because each time the add button is pressed, a new word item is inserted to Word.allWords, want to upgrade the user's data here.
+                 */
                 writeFile();
                 Toast.makeText(getApplicationContext(), "Word Added", Toast.LENGTH_SHORT).show();
             }
@@ -101,6 +104,9 @@ public class AddWord extends AppCompatActivity {
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
+    /**
+     * a variant of the writeFileInitial. update the user data file according to the attribute value for each word in the arraylist Word.allwords.
+     */
     public void writeFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, Word.username + ".txt");

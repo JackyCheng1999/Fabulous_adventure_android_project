@@ -120,6 +120,9 @@ public class Vocab2 extends AppCompatActivity {
         refresh.setOnClickListener(v -> {
             Log.d(TAG, "Refresh button clicked");
             list1.setAdapter(new MyListAdapter(this, R.layout.word_item, Word.pullRandom()));
+            /**
+             * Because every time the refresh button is pressed, the attribute value(mastery, stalecount, priority value) for some words changed, want to update the user data here.
+             */
             writeTextFile();
         });
 
@@ -228,6 +231,9 @@ public class Vocab2 extends AppCompatActivity {
                         //Net decrease == 1 instead of 0 because of this
                         ((Word) getItem(position)).decMastery();
                         ((Word) getItem(position)).decMastery();
+                        /**
+                         * because each time the getDefinition button is pressed, attribute value(priority, mastery, stalecount) change, want to update the user's data file here.
+                         */
                         writeTextFile();
                     }
                 });
@@ -431,6 +437,9 @@ public class Vocab2 extends AppCompatActivity {
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
+    /**
+     * a variant of the writeFileInitial. update the user data file according to the attribute value for each word in the arraylist Word.allwords.
+     */
     public void writeTextFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, Word.username + ".txt");

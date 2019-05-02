@@ -50,12 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
     Button b1, b2, b3;
 
-    final String FILENAME = "customWords.csv";
+    private static final String TAG = "Yichen Mainactivity";
 
-    private static final String TAG = "brett VocabActivity";
+    //File name for the stored csv file
+    final String FILENAME = "customWords.csv";
 
     private String[] Permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+    /**
+     * a folder under the external storage directory. Saving all the user's data files.
+     */
     public String folder_main = "Test-PreperUserData";
 
     @Override
@@ -118,9 +122,18 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     if (s2.equals(s3)) {
                         boolean chkmail = db.chkmail(s1);
+                        /**
+                         * checking if the email address already exist in the database
+                         */
                         if (chkmail == true) {
                             boolean insert = db.insert(s1, s2);
+                            /**
+                             * if the insertion process is successful (no weird things happened), go forward
+                             */
                             if (insert == true) {
+                                /**
+                                 * every time a new user registered, create the initialized user data file.
+                                 */
                                 writeFileInitial();
                                 Toast.makeText(getApplicationContext(), "Registered  Successfully", Toast.LENGTH_SHORT).show();
                             }
@@ -158,18 +171,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This is the function that initialize the user's data text document.All words' priority value is set to one.
+     * This is the function that initialize the user's data text document.All words' priority, mastery. and stalecount values are set to one by default.
      */
     public void writeFileInitial() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            /**
+             * Create the folder under the external storage directory, if not exist
+             */
             File f = new File(Environment.getExternalStorageDirectory(), folder_main);
             if (!f.exists()) {
                 f.mkdirs();
             }
+            /**
+             * Creating the initial user's data file according to the username, under the folder
+             */
             File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, e1.getText().toString() + ".txt");
             try {
                 FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                /**
+                 * set to one by default
+                 */
                 for (int i = 0; i < Word.allWords.size(); i++) {
                     bw.write(Word.allWords.get(i).getWord() + " " + "1"  + " " + "1" + " " + "1");
                     bw.newLine();

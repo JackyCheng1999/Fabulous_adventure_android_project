@@ -23,11 +23,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylibrary/src/main/java/com/example/mylibrary/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/mylibrary/src/main/java/com/example/mylibrary/Word.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
         <counts>
           <entry key="csv" value="3" />
           <entry key="gradle" value="6" />
-          <entry key="java" value="71" />
+          <entry key="java" value="73" />
           <entry key="png" value="1" />
           <entry key="txt" value="2" />
           <entry key="xml" value="89" />
@@ -59,7 +58,7 @@
           <entry key="CSV" value="2" />
           <entry key="Groovy" value="6" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="71" />
+          <entry key="JAVA" value="73" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="89" />
         </counts>
@@ -76,16 +75,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="47" />
-          <entry key="java" value="5642" />
-          <entry key="txt" value="784" />
+          <entry key="java" value="8265" />
+          <entry key="txt" value="850" />
           <entry key="xml" value="1017" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="47" />
-          <entry key="JAVA" value="5642" />
-          <entry key="PLAIN_TEXT" value="784" />
+          <entry key="JAVA" value="8265" />
+          <entry key="PLAIN_TEXT" value="850" />
           <entry key="XML" value="1017" />
         </counts>
       </usages-collector>
@@ -96,20 +95,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3119">
-              <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
+            <state relative-caret-position="-2986">
+              <caret line="134" column="107" selection-start-line="134" selection-start-column="107" selection-end-line="134" selection-end-column="107" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -117,60 +107,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="127" column="44" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
+            <state relative-caret-position="187">
+              <caret line="107" column="146" lean-forward="true" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="146" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6672">
-              <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylibrary/src/main/java/com/example/mylibrary/Word.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1699">
-              <caret line="129" column="52" selection-start-line="129" selection-start-column="52" selection-end-line="129" selection-end-column="52" />
-              <folding>
-                <element signature="e#2927#2928#0" expanded="true" />
-                <element signature="e#2958#2959#0" expanded="true" />
-                <element signature="e#3272#3273#0" expanded="true" />
-                <element signature="e#3306#3307#0" expanded="true" />
-                <element signature="e#3313#3314#0" expanded="true" />
-                <element signature="e#3345#3346#0" expanded="true" />
-                <element signature="e#3734#3735#0" expanded="true" />
-                <element signature="e#3767#3768#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/questionslist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="422" column="1" selection-start-line="422" selection-start-column="1" selection-end-line="422" selection-end-column="1" />
-              <folding>
-                <element signature="e#10124#10125#0" expanded="true" />
-                <element signature="e#10161#10162#0" expanded="true" />
-                <element signature="e#10348#10349#0" expanded="true" />
-                <element signature="e#10392#10393#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+            <state relative-caret-position="-418">
+              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,19 +126,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MockExam.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1634">
-              <caret line="94" column="1" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
+            <state relative-caret-position="1672">
+              <caret line="132" column="24" lean-forward="true" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="126" column="13" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="126" selection-end-column="13" />
+            <state relative-caret-position="-882">
+              <caret line="59" column="174" selection-start-line="59" selection-start-column="174" selection-end-line="59" selection-end-column="174" />
             </state>
           </provider>
         </entry>
@@ -229,8 +176,8 @@
       <find>onop</find>
       <find>ref</find>
       <find>gener</find>
-      <find>refresh</find>
       <find>stalecount</find>
+      <find>refresh</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -262,19 +209,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_word.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_mock_exam.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_vocab2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/questionslist.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Answerspage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java" />
         <option value="$PROJECT_DIR$/mylibrary/src/main/java/com/example/mylibrary/Word.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java" />
       </list>
     </option>
   </component>
@@ -300,11 +247,6 @@
             <path>
               <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
@@ -312,32 +254,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="fabulousadventure" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="raw" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="mylibrary" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="mylibrary" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="FabulousAdventure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="mylibrary" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="mylibrary" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -623,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556827297249</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="userData file save more information.">
+      <created>1556828707645</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556828707645</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -714,7 +637,8 @@
     <MESSAGE value="fixed points counting bug in reading part. fix logic bug in parent activity." />
     <MESSAGE value="a patch in previous version get accidentally deleted. add it back" />
     <MESSAGE value="usersdata structure more concise, and all saved under Test-PreperUserData folder under the external storage directory." />
-    <option name="LAST_COMMIT_MESSAGE" value="usersdata structure more concise, and all saved under Test-PreperUserData folder under the external storage directory." />
+    <MESSAGE value="userData file save more information." />
+    <option name="LAST_COMMIT_MESSAGE" value="userData file save more information." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_vocab.xml" />
@@ -812,16 +736,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="912">
           <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -945,15 +859,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/questionslist.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="422" column="1" selection-start-line="422" selection-start-column="1" selection-end-line="422" selection-end-column="1" />
+        <state relative-caret-position="1007">
+          <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
           <folding>
-            <element signature="e#10124#10125#0" expanded="true" />
-            <element signature="e#10161#10162#0" expanded="true" />
-            <element signature="e#10348#10349#0" expanded="true" />
-            <element signature="e#10392#10393#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,10 +876,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainPage.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/questionslist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="543">
+          <caret line="422" column="1" selection-start-line="422" selection-start-column="1" selection-end-line="422" selection-end-column="1" />
+          <folding>
+            <element signature="e#10124#10125#0" expanded="true" />
+            <element signature="e#10161#10162#0" expanded="true" />
+            <element signature="e#10348#10349#0" expanded="true" />
+            <element signature="e#10392#10393#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -989,24 +906,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/DatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/AddWord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="127" column="44" selection-start-line="127" selection-start-column="44" selection-end-line="127" selection-end-column="44" />
+        <state relative-caret-position="187">
+          <caret line="107" column="146" lean-forward="true" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="146" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Vocab2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6672">
-          <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+        <state relative-caret-position="1672">
+          <caret line="132" column="24" lean-forward="true" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3119">
-          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
+        <state relative-caret-position="-2986">
+          <caret line="134" column="107" selection-start-line="134" selection-start-column="107" selection-end-line="134" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1015,18 +949,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="126" column="13" lean-forward="true" selection-start-line="120" selection-start-column="12" selection-end-line="126" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/us/mrvivacio/fabulousadventure/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-882">
+          <caret line="59" column="174" selection-start-line="59" selection-start-column="174" selection-end-line="59" selection-end-column="174" />
         </state>
       </provider>
     </entry>
