@@ -129,6 +129,22 @@ public class Login extends AppCompatActivity {
                 }
             }
         }
+        /**
+         * If other user add new words to the word library, its attribute value in the library should not be loaded in because the current user might have not een these words on the app. Set the new words' attribute vaue to 1, which is the default.
+         */
+        for (int i = 0; i < Word.allWords.size(); i++) {
+            boolean existInFile = false;
+            for (int j = 0; j < readIn.size(); j++) {
+                if (readIn.get(j).split(" ")[0].equals(Word.allWords.get(i).getWord())) {
+                    existInFile = true;
+                }
+            }
+            if (!existInFile) {
+                Word.allWords.get(i).pUpdate(1);
+                Word.allWords.get(i).mUpdate(1);
+                Word.allWords.get(i).sUpdate(1);
+            }
+        }
     }
 
 }
