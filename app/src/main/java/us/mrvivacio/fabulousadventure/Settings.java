@@ -48,6 +48,11 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Word.username = "Anonymous User";
+                for (int j = 0; j < Word.allWords.size(); j++) {
+                    Word.allWords.get(j).pUpdate(1);
+                    Word.allWords.get(j).mUpdate(1);
+                    Word.allWords.get(j).sUpdate(1);
+                }
                 Toast.makeText(getApplicationContext(), "Log Out Successfully", Toast.LENGTH_SHORT).show();
             }
         });

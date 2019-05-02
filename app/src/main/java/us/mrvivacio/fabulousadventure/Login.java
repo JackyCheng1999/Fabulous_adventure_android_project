@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
                     Word.username = email;
                     fileName = Word.username + ".txt";
                     readFile();
-                    priorityUpdate();
+                    allUpdate();
                     Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainPage.class);
                     startActivity(intent);
@@ -116,11 +116,13 @@ public class Login extends AppCompatActivity {
     /**
      * If the login process is successful, we will call this function, to upadate the priority value for the certain user.
      */
-    public void priorityUpdate() {
+    public void allUpdate() {
         for (int i = 0; i < readIn.size(); i++) {
             for (int j = 0; j < Word.allWords.size(); j++) {
                 if (readIn.get(i).split(" ")[0].equals(Word.allWords.get(j).getWord())) {
                     Word.allWords.get(j).pUpdate(Integer.parseInt(readIn.get(i).split(" ")[1]));
+                    Word.allWords.get(j).mUpdate(Integer.parseInt(readIn.get(i).split(" ")[2]));
+                    Word.allWords.get(j).sUpdate(Integer.parseInt(readIn.get(i).split(" ")[3]));
                 }
             }
         }

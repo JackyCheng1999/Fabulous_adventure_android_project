@@ -118,6 +118,22 @@ public class Word implements Comparable {
     }
 
     /**
+     * Set the mastery with a specific value. Use to load user's data into the app.
+     * @param value the specific value of mastery for a user
+     */
+    public void mUpdate(int value) {
+        mastery = value;
+    }
+
+    /**
+     * Set the stalecount with a specific value. Use to load user's data into the app.
+     * @param value the specific value of stalecount for a user
+     */
+    public void sUpdate(int value) {
+        staleCount = value;
+    }
+
+    /**
      * @param other The Word to be searched
      * @return The index of the word, -1 if not found
      */
@@ -153,6 +169,14 @@ public class Word implements Comparable {
      */
     public int getPriority() {
         return priority;
+    }
+
+    /**
+     * get the stalecount of the word
+     * @return the stalecount of the word, will be used to save in user's data file.
+     */
+    public int getStaleCount() {
+        return staleCount;
     }
 
     /**

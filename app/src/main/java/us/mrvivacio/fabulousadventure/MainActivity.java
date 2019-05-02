@@ -82,8 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         b3 = (Button) findViewById(R.id.skip);
 
-        generateList();
-        Word.loaded = true;
+        if (!Word.loaded) {
+            generateList();
+            Word.loaded = true;
+        }
 
 
         b3.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
                 for (int i = 0; i < Word.allWords.size(); i++) {
-                    bw.write(Word.allWords.get(i).getWord() + " " + "1");
+                    bw.write(Word.allWords.get(i).getWord() + " " + "1"  + " " + "1" + " " + "1");
                     bw.newLine();
                 }
                 bw.close();

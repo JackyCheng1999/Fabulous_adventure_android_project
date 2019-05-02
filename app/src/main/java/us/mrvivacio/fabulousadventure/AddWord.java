@@ -108,7 +108,7 @@ public class AddWord extends AppCompatActivity {
                 FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
                 for (int i = 0; i < Word.allWords.size(); i++) {
-                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));
+                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()) + " " + Integer.toString(Word.allWords.get(i).getMastery()) + " " + Integer.toString(Word.allWords.get(i).getStaleCount()));
                     bw.newLine();
                 }
                 bw.close();
