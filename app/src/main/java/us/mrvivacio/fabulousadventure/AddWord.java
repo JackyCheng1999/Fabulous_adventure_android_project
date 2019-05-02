@@ -35,6 +35,8 @@ public class AddWord extends AppCompatActivity {
     //Button to submit
     private Button submit;
 
+    public String folder_main = "Test-PreperUserData";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: entry point");
@@ -101,9 +103,9 @@ public class AddWord extends AppCompatActivity {
 
     public void writeFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            File textFile = new File(Environment.getExternalStorageDirectory(), Word.username + ".txt");
+            File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, Word.username + ".txt");
             try {
-                FileOutputStream fos = new FileOutputStream(textFile);
+                FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
                 for (int i = 0; i < Word.allWords.size(); i++) {
                     bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));

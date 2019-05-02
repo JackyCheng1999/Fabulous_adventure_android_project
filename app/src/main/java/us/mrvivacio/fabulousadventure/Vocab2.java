@@ -64,6 +64,8 @@ public class Vocab2 extends AppCompatActivity {
     //File name for the stored csv file
     final String FILENAME = "customWords.csv";
 
+    public String folder_main = "Test-PreperUserData";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Checks permissions again
@@ -431,9 +433,9 @@ public class Vocab2 extends AppCompatActivity {
 
     public void writeTextFile() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            File textFile = new File(Environment.getExternalStorageDirectory(), Word.username + ".txt");
+            File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, Word.username + ".txt");
             try {
-                FileOutputStream fos = new FileOutputStream(textFile);
+                FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
                 for (int i = 0; i < Word.allWords.size(); i++) {
                     bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));

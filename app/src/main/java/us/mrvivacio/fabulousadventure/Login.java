@@ -70,20 +70,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public boolean checkPermission(String permission) {
-        int check = ContextCompat.checkSelfPermission(this, permission);
-        return (check == PackageManager.PERMISSION_GRANTED);
-    }
-
-    private boolean isExternalStorageWritable() {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            Log.i("State", "Yes, Writable");
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * checking function checking if we can read contents from the external storage.
      * @return a boolean value telling us whether we can read contents from the external storage.

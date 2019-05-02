@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] Permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-    public String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "WordForce";
+    public String folder_main = "Test-PreperUserData";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         b3 = (Button) findViewById(R.id.skip);
 
         generateList();
+        Word.loaded = true;
 
 
         b3.setOnClickListener(new View.OnClickListener() {
@@ -154,46 +155,25 @@ public class MainActivity extends AppCompatActivity {
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
-
-    public void writeFile() {
-        if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
-            try {
-                FileOutputStream fos = new FileOutputStream(textFile);
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-                for (int i = 0; i < Word.allWords.size(); i++) {
-                    bw.write(Word.allWords.get(i).getWord() + " " + Integer.toString(Word.allWords.get(i).getPriority()));
-                    bw.newLine();
-                }
-                bw.close();
-                //fos.write("1".getBytes());
-                fos.close();
-                Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Toast.makeText(this,"Cannot Write To External Storage",Toast.LENGTH_SHORT).show();
-        }
-    }
-
     /**
      * This is the function that initialize the user's data text document.All words' priority value is set to one.
      */
     public void writeFileInitial() {
         if (isExternalStorageWritable() && checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            File textFile = new File(Environment.getExternalStorageDirectory(), e1.getText().toString() + ".txt");
+            File f = new File(Environment.getExternalStorageDirectory(), folder_main);
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+            File textFile = new File(Environment.getExternalStorageDirectory() + "/" + folder_main, e1.getText().toString() + ".txt");
             try {
-                FileOutputStream fos = new FileOutputStream(textFile);
+                FileOutputStream fos = new FileOutputStream(textFile, false);
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
                 for (int i = 0; i < Word.allWords.size(); i++) {
                     bw.write(Word.allWords.get(i).getWord() + " " + "1");
                     bw.newLine();
                 }
                 bw.close();
-                //fos.write("1".getBytes());
                 fos.close();
-                Toast.makeText(this,"File Saved",Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -216,18 +196,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isExternalStorageReadable() {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
-            || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
-            Log.i("State", "Yes, Readable");
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
-     * copy from Brett Patterson's branch, generate the word list at rhe start of the application to change these priority value in advamce.
+     * copy from Brett Patterson's branch, generate the word list at rhe start of the application to change these priority value in advance.
      */
     public void generateList() {
 
