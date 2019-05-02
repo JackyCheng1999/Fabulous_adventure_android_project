@@ -31,8 +31,6 @@ public class MainPage extends AppCompatActivity {
         //https://www.youtube.com/watch?v=LD2zsCAAVXw
         Toolbar toolbar = findViewById(R.id.action_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(Word.username);
 
 

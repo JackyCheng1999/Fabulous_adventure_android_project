@@ -17,6 +17,12 @@ public class questionslist extends MockExam { //AppCompatActivity
 
     /**
      * QUESTION CONTENTS
+     * string_choice1: The value of the textView for Choice A
+     * string_choice2: The value of the textView for Choice B
+     * string_choice3: The value of the textView for Choice C
+     * string_choice4: The value of the textView for Choice D
+     * Choices: The bit-computing value to record each question's answer
+     *          For example, 8 = A, 9 = AD, 15 = ABCD
      */
     String[] string_content = new String[21];
     String[] string_choice1 = new String[21];
@@ -47,6 +53,7 @@ public class questionslist extends MockExam { //AppCompatActivity
         /**
          * find the textview by ID
          * preparing to read from the documents
+         * someMessage: to read the reading material
          */
 
         TextView MessageWindow = (TextView) findViewById(R.id.messageWindow2);
@@ -86,12 +93,15 @@ public class questionslist extends MockExam { //AppCompatActivity
             }
         }
 
+        /**
+         * Set text for MessageWindow
+         */
+
         MessageWindow.setText(stringBuilder.toString());
 
-        /*for (int i = 1; i <= 20; i++) {
-            Choices[i] = 0;
-        }*/
-
+        /**
+         * x represents the current Question ID for the user
+         */
 
         x = 1;
 
@@ -127,6 +137,7 @@ public class questionslist extends MockExam { //AppCompatActivity
 
         /**
          * The OnClickListener function of the submitAll button
+         * When clicking SubmitAll, user will be taken to the new page.
          */
 
         submitAll = (Button) findViewById(R.id.submitAll);

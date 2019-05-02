@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".AddWord"
-            android:parentActivityName=".Vocab2"></activity>
+            android:parentActivityName=".Vocab2"/>
         <activity
             android:name=".Settings"
             android:parentActivityName=".MainPage" />
@@ -22,8 +22,7 @@
             android:name=".Vocab2"
             android:parentActivityName=".MainPage" />
         <activity
-            android:name=".MainPage"
-            android:parentActivityName=".Login" />
+            android:name=".MainPage"/>
         <activity android:name=".Login" />
         <activity android:name=".Answerspage"
             android:parentActivityName=".questionslist"/>
@@ -39,7 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
